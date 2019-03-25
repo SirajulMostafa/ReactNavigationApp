@@ -32,7 +32,7 @@ class DashboardScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Dashboard</Text>
+        <Text>Dashboard 2</Text>
       </View>
     );
   }
@@ -160,7 +160,9 @@ const DashboardTabNavigator = createBottomTabNavigator(
     }
   })
 const DashboarStackNavigator = createStackNavigator({
-  DashboardTabNavigator: DashboardTabNavigator
+  DashboardTabNavigator: {screen: DashboardTabNavigator},
+  
+
 },{
   defaultNavigationOptions:({navigation})=>{
     return{
@@ -182,8 +184,12 @@ const DashboarStackNavigator = createStackNavigator({
 
 const AppDrawerNavigator = createDrawerNavigator(
   {
-    Dashboard: { screen: DashboarStackNavigator }
-  });
+    Dashboard: { screen: DashboarStackNavigator },
+    Welcome: { screen: WelcomeScreen },
+    DashboardScreen: { screen: DashboardScreen },
+    
+  }
+  );
 
 
 const AppSwitchNavigator = createSwitchNavigator(
