@@ -44,7 +44,10 @@ class Feed extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Feed</Text>
+        {/* <Text>Feed</Text> */}
+       
+        <Button title='Details feed page' onPress={() => this.props.navigation.navigate('Detail')}></Button>
+        
       </View>
     );
   }
@@ -74,16 +77,84 @@ export default App;
 
 
 
+class Detail extends Component{
+  render(){
+    return (
+      <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+        <Text>Detail</Text>
+      </View>
+    );
+  }
+}
+
+const FeedStack = createStackNavigator({
+  Feed: {
+    screen:Feed,
+    
+    navigationOptions:({navigation})=>{
+      return{
+        headerTitle:'Feed',
+         headerLeft:(
+           <Button title="Menu" style={{paddingLeft:10}} onPress={()=>navigation.openDrawer() } />
+         )
+        };
+    }
+    
+  },
+  Detail:{
+    screen:Detail
+  }
+},
+{defaultNavigationOptions:{
+  gesturesEnabled:false// for apple always menu button show the bashbord
+  }
+}
+)
+const ProfileStack = createStackNavigator({
+  Profile: {
+    screen:Profile,
+    
+    navigationOptions:({navigation})=>{
+      return{
+        headerTitle:'Profile',
+         headerLeft:(
+           <Button title="Menu" style={{paddingLeft:10}} onPress={()=>navigation.openDrawer() } />
+         )
+        };
+    }
+    
+  }
+})
+const SettingsStack = createStackNavigator({
+  Settings: {
+    screen:Settings,
+    
+    navigationOptions:({navigation})=>{
+      return{
+        headerTitle:'Setting',
+         headerLeft:(
+           <Button title="Menu" style={{paddingLeft:10}} onPress={()=>navigation.openDrawer() } />
+         )
+        };
+    }
+    
+  }
+  
+})
+
+
+
 const DashboardTabNavigator = createBottomTabNavigator(
   {
-    Feed,
-    Profile,
-    Settings
+    FeedStack,
+    ProfileStack,
+    SettingsStack
   },
   {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
+        header:null,
         headerTitle: routeName
       }
     }
@@ -146,11 +217,13 @@ const styles = StyleSheet.create({
 
 });
 
-//imrnc
-// rncomp
-// rnfcomp
-// rnmap
-// imrnp
-// imrnp
-// imrnss
+// imrnc  - Import React Native Component
+// imrnfc - Import React Native Functional Component
+// imrnp -  Create Panresponder.create
+// imrnss - Create React Native Style Sheet
+// clog   - console.log("$1")
+// rnmap  - React Native Map Method
+// rndime - const {width,height} = Dimensions.get('window')
+// rncomp - Create a React Native Component
+// rnfcomp  - Create a Functional React Native Component
 
