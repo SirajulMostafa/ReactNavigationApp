@@ -8,13 +8,13 @@ import Main from "../Style/Main";
 import {
     createAppContainer,
     createStackNavigator,
-   
+  createBottomTabNavigator,
 } from "react-navigation";
 
 
 const createStackNav = createStackNavigator(
   {
-    WelcomeScreen: WelcomeScreen,
+    Welcome: WelcomeScreen,
     Profile: Profile,
     Setting: Setting,
   }
@@ -31,6 +31,13 @@ const createStackNav = createStackNavigator(
   // }
 );
 
-const AppContainer = createAppContainer(createStackNav);
+const createtTapNav = createBottomTabNavigator({
+  Welcome: WelcomeScreen,
+  Profile: Profile,
+  Setting: Setting,
+});
+
+//const AppContainer = createAppContainer(createStackNav);
+const AppContainer = createAppContainer(createtTapNav);
 
 export default AppContainer;
